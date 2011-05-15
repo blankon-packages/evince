@@ -1,0 +1,6 @@
+debian/tmp/usr/lib/libevdocument.{so,a}
+debian/tmp/usr/lib/pkgconfig/evince-document-*
+debian/tmp/usr/include/evince/*/*document*
+debian/tmp/usr/share/gtk-doc/html/libevdocument*
+debian/tmp/usr/share/gtk-doc/html/evince/*
+debian/tmp/usr/share/gir-1.0/EvinceDocument-*.gir

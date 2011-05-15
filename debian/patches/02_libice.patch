@@ -1,0 +1,23 @@
+From 4923bac0fe9ad9fbd708481ccb773d4e5ab8a1e9 Mon Sep 17 00:00:00 2001
+From: Robert Ancell <robert.ancell@canonical.com>
+Date: Mon, 6 Dec 2010 12:37:40 +1100
+Subject: [PATCH] shell: Link against libice
+
+Bug #?
+---
+ configure.ac |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+Index: evince-2.32.0/configure.ac
+===================================================================
+--- evince-2.32.0.orig/configure.ac	2010-12-06 12:53:23.388902002 +1100
++++ evince-2.32.0/configure.ac	2010-12-06 12:53:27.178902002 +1100
+@@ -221,7 +221,7 @@
+   AC_DEFINE([WITH_SMCLIENT],[1],[Define if smclient is enabled])
+ 
+   case "$with_smclient" in
+-    xsmp) SMCLIENT_PKGS="sm >= 1.0.0" ;;
++    xsmp) SMCLIENT_PKGS="sm >= 1.0.0 ice" ;;
+     *) SMCLIENT_PKGS="" ;;
+   esac
+ 
