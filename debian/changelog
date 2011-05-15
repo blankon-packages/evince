@@ -3,7 +3,6 @@ evince (2.32.0-0ubuntu12+blankon1) pattimura; urgency=low
   * Remove non-id transitional help
     - add debian/patches/07_blankon-no-po-help.patch
     - update debian/patches/series
-  * Changes rules
 
  -- priyess <pri_yess@yahoo.com>  Mon, 16 May 2011 05:41:36 +0700
 
