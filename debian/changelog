@@ -1,3 +1,10 @@
+evince (2.32.0-0ubuntu12+blankon3) pattimura; urgency=low
+
+  * change debian/control
+    - remove liblaunchpad-integration-dev
+
+ -- Mas Supriyadi <pri_yess@yahoo.com>  Mon, 01 Aug 2011 20:55:53 +0700
+
 evince (2.32.0-0ubuntu12+blankon2) pattimura; urgency=low
 
   * remove debian/01_lpi.pach and update series 
