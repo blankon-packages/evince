@@ -1,3 +1,24 @@
+evince (2.32.0-0ubuntu12.2+blankon1) pattimura; urgency=low
+
+  * New Upstream updates
+  
+ -- Rahman Yusri Aftian <aftian@di.blankon.in>  Tue, 02 Aug 2011 17:32:37 +0700
+
+evince (2.32.0-0ubuntu12.2) natty-proposed; urgency=low
+
+  * debian/patches/0001-libview-Make-sure-we-have-a-valid-page-range*:
+    - Backport patch from upstream commit, fixing segfault in
+      clear_job_selection(). (LP: #651931)
+
+ -- Chow Loong Jin <hyperair@ubuntu.com>  Sun, 08 May 2011 19:18:04 +0800
+
+evince (2.32.0-0ubuntu12.1) natty-proposed; urgency=low
+
+  * update debian/apparmor-profile.abstraction to account for move of
+    /dev/.udev/db/ to /dev/.udev/data/ (LP: #766882)
+
+ -- Jamie Strandboge <jamie@ubuntu.com>  Fri, 22 Apr 2011 12:40:41 -0500
+
 evince (2.32.0-0ubuntu12+blankon3) pattimura; urgency=low
 
   * change debian/control
