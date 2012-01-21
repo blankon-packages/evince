@@ -3,5 +3,5 @@
 04_gold.patch
 05_library-path.patch
 06_new_poppler_api_update.patch
-0001-libview-Make-sure-we-have-a-valid-page-range-before-.patch
 07_blankon-no-po-help.patch
+0001-libview-Make-sure-we-have-a-valid-page-range-before-.patch

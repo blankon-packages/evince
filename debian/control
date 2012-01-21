@@ -9,7 +9,7 @@ Priority: optional
 Maintainer: BlankOn Developers <blankon-dev@googlegroups.com>
 XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Vcs-Bzr: https://code.launchpad.net/~ubuntu-desktop/evince/ubuntu
+Vcs-Bzr: http://dev.blankonlinux.or.id/bzr/pattimura/evince
 Build-Depends: cdbs,
                debhelper (>= 7.4.20ubuntu5),
                intltool (>= 0.35.0),
@@ -37,7 +37,7 @@ Build-Depends: cdbs,
                libkpathsea-dev,
                libt1-dev,
                autotools-dev,
-               hardening-includes,              
+               hardening-includes,
                libgirepository1.0-dev (>= 0.6.7),
                gobject-introspection (>= 0.6.7),
                gir1.2-glib-2.0,

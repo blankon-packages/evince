@@ -1,8 +1,17 @@
-evince (2.32.0-0ubuntu12.2+blankon1) pattimura; urgency=low
+evince (2.32.0-0ubuntu12.3+blankon1) pattimura-update; urgency=low
 
-  * New Upstream updates
-  
- -- Rahman Yusri Aftian <aftian@di.blankon.in>  Tue, 02 Aug 2011 17:32:37 +0700
+  * Upstream update
+  * Remove lpi
+
+ -- Mas Supriyadi <supriyadi@surabaya.di.blankon.in>  Sat, 21 Jan 2012 15:24:40 +0700
+
+evince (2.32.0-0ubuntu12.3) natty-proposed; urgency=low
+
+  * debian/apparmor-profile: enable networking for the thumbnailer for
+    people who have configured nautilus to preview remote files when using
+    NFS. (LP: #778638)
+
+ -- Marc Gariépy <mgariepy@ubuntu.com>  Wed, 31 Aug 2011 11:42:48 -0400
 
 evince (2.32.0-0ubuntu12.2) natty-proposed; urgency=low
 
@@ -11,34 +20,6 @@ evince (2.32.0-0ubuntu12.2) natty-proposed; urgency=low
       clear_job_selection(). (LP: #651931)
 
  -- Chow Loong Jin <hyperair@ubuntu.com>  Sun, 08 May 2011 19:18:04 +0800
-
-evince (2.32.0-0ubuntu12.1) natty-proposed; urgency=low
-
-  * update debian/apparmor-profile.abstraction to account for move of
-    /dev/.udev/db/ to /dev/.udev/data/ (LP: #766882)
-
- -- Jamie Strandboge <jamie@ubuntu.com>  Fri, 22 Apr 2011 12:40:41 -0500
-
-evince (2.32.0-0ubuntu12+blankon3) pattimura; urgency=low
-
-  * change debian/control
-    - remove liblaunchpad-integration-dev
-
- -- Mas Supriyadi <pri_yess@yahoo.com>  Mon, 01 Aug 2011 20:55:53 +0700
-
-evince (2.32.0-0ubuntu12+blankon2) pattimura; urgency=low
-
-  * remove debian/01_lpi.pach and update series 
-
- -- Mas Supriyadi <pri_yess@yahoo.com>  Sat, 09 Jul 2011 19:21:04 +0700
-
-evince (2.32.0-0ubuntu12+blankon1) pattimura; urgency=low
-
-  * Remove non-id transitional help
-    - add debian/patches/07_blankon-no-po-help.patch
-    - update debian/patches/series
-
- -- priyess <pri_yess@yahoo.com>  Mon, 16 May 2011 05:41:36 +0700
 
 evince (2.32.0-0ubuntu12.1) natty-proposed; urgency=low
 

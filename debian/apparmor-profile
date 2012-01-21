@@ -117,12 +117,18 @@
 /usr/bin/evince-thumbnailer {
   #include <abstractions/evince>
 
-  # The thumbnailer should not have access to networking (and therefore no
-  # nameservice abstraction). Allow reading of /etc/passwd, but suppress
-  # logging denial of nsswitch.conf; the thumbnailer does just fine without
-  # needing network access as defined in nsswitch.conf.
+  # The thumbnailer doesn't need access to everything in the nameservice
+  # abstraction. Allow reading of /etc/passwd and /etc/group, but suppress
+  # logging denial of nsswitch.conf.
   /etc/passwd r,
+  /etc/group r,
   deny /etc/nsswitch.conf r,
+
+  # TCP/UDP network access for NFS
+  network inet  stream,
+  network inet6 stream,
+  network inet  dgram,
+  network inet6 dgram,
 
   /usr/bin/evince-thumbnailer mr,
 
