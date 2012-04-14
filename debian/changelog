@@ -1,242 +1,187 @@
-evince (2.32.0-0ubuntu12.3+blankon1) pattimura-updates; urgency=low
+evince (3.3.90-1blankon1) rote; urgency=low
 
-  * Upstream update
-  * Remove lpi
+  * Depends: komodo-icon-theme.
+  * debian/control maintainer
 
- -- Mas Supriyadi <supriyadi@surabaya.di.blankon.in>  Sat, 21 Jan 2012 15:24:40 +0700
+ -- Rahman Yusri Aftian <aftian@di.blankon.in>  Sat, 14 Apr 2012 04:58:35 +0000
 
-evince (2.32.0-0ubuntu12.3) natty-proposed; urgency=low
+evince (3.3.90-1) experimental; urgency=low
 
-  * debian/apparmor-profile: enable networking for the thumbnailer for
-    people who have configured nautilus to preview remote files when using
-    NFS. (LP: #778638)
+  * New upstream development release.
+  * Change section of gir1.2-evince-3.0 to introspection.
+  * Tighten dependency beetwen libevince-dev and gir1.2-evince-3.0.
+  * Exclude /usr/lib/nautilus/ and /usr/lib/evince/ from dh_makeshlibs.
+  * debian/patches/01_poppler-0.16-compat.patch: Keep evince compiling against
+    0.16 so we don't require 0.18. Thanks Pino Toscano for the patch.
+  * Enable XPS support.
+  * Add symbols file for libevince3-3.
 
- -- Marc Gariépy <mgariepy@ubuntu.com>  Wed, 31 Aug 2011 11:42:48 -0400
+ -- Michael Biebl <biebl@debian.org>  Sat, 10 Mar 2012 17:36:20 +0100
 
-evince (2.32.0-0ubuntu12.2) natty-proposed; urgency=low
+evince (3.2.1-1) unstable; urgency=low
 
-  * debian/patches/0001-libview-Make-sure-we-have-a-valid-page-range*:
-    - Backport patch from upstream commit, fixing segfault in
-      clear_job_selection(). (LP: #651931)
+  [ Jordi Mallach ]
+  * Make Vcs-* fields point at the unstable branch.
 
- -- Chow Loong Jin <hyperair@ubuntu.com>  Sun, 08 May 2011 19:18:04 +0800
+  [ Michael Biebl ]
+  * New upstream release.
 
-evince (2.32.0-0ubuntu12.1) natty-proposed; urgency=low
+ -- Michael Biebl <biebl@debian.org>  Tue, 18 Oct 2011 00:32:54 +0200
 
-  * update debian/apparmor-profile.abstraction to account for move of
-    /dev/.udev/db/ to /dev/.udev/data/ (LP: #766882)
+evince (3.2.0-2) unstable; urgency=low
 
- -- Jamie Strandboge <jamie@ubuntu.com>  Fri, 22 Apr 2011 12:40:41 -0500
+  * Upload to unstable.
+  * debian/watch: Switch to .xz tarballs.
 
-evince (2.32.0-0ubuntu12) natty; urgency=low
+ -- Michael Biebl <biebl@debian.org>  Thu, 13 Oct 2011 19:58:23 +0200
 
-  * debian/rules: update the translation template in the correct directory
+evince (3.2.0-1) experimental; urgency=low
 
- -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 22 Mar 2011 11:52:21 +0100
+  [ Josselin Mouette ]
+  * 03_nodisplay.patch: drop NoDisplay=true from the desktop file, so 
+    that it appears in the shell. Closes: #427576.
 
-evince (2.32.0-0ubuntu11) natty; urgency=low
+  [ Michael Biebl ]
+  * New upstream release.
+  * Remove patches:
+    - debian/patches/00_gir-libdocument-library-path.patch, merged upstream.
+    - debian/patches/01_configure-gdk-targets.patch, merged upstream.
+    - debian/patches/02-link-missing-zlib-library.patch, fixed upstream.
+  * debian/control:
+    - Add Vcs-* fields.
 
-  * debian/apparmor-profile.abstraction: allow /usr/bin/mktextfm
-  * debian/apparmor-profile: allow read of /etc/passwd to cut down on
-    .xsession-errors output
+ -- Michael Biebl <biebl@debian.org>  Tue, 04 Oct 2011 07:19:28 +0200
 
- -- Jamie Strandboge <jamie@ubuntu.com>  Tue, 08 Mar 2011 09:19:54 -0600
+evince (3.0.2-2) experimental; urgency=low
 
-evince (2.32.0-0ubuntu10) natty; urgency=low
+  [ Josselin Mouette ]
+  * evince-gtk.mime: removed too. Really closes: #627027.
+  * Add missing Replaces/Breaks against libevince3. Closes: #632733.
 
-  * debian/apparmor-profile.abstraction: allow read of @{PROC}/[0-9]*/status
-  * debian/apparmor*: more strictly confine the thumbnailer, in particular
-    with regard to networking (LP: #720961)
-    - move a bunch of abstractions from the evince abstraction into the
-      evince and evince-previewer profiles
-    - move yelp and bug-buddy execs to evince and evince-previewer profiles
-    - deny reads to /etc/passwd and /etc/nsswitch.conf. These are caused by
-      calls to getuid() and geteuid() from gnome libraries, but the
-      thumbnailer doesn't actually need them
+  [ Michael Biebl ]
+  * Rely on cdbs to call dh_girepository. Bump Build-Depends accordingly.
+  * Bump debhelper compatibility level to 8.
+  * debian/patches/02-link-missing-zlib-library.patch: Fix build failure with
+    binutils-gold (missing -lz). Closes: #638689
+  * Remove desktop-check-mime-types call from debian/rules.
 
- -- Jamie Strandboge <jamie@ubuntu.com>  Thu, 17 Feb 2011 17:34:12 -0600
+ -- Michael Biebl <biebl@debian.org>  Sun, 28 Aug 2011 20:04:11 +0200
 
-evince (2.32.0-0ubuntu9) natty; urgency=low
+evince (3.0.2-1) experimental; urgency=low
 
+  [ Josselin Mouette ]
+  * bug-presubj: please document where to report rendering bugs.
+  * evince.mime: dropped. We have desktop files to handle MIME 
+    associations, no need to maintain an alternate system by hand.
+    Closes: #619564, #627027, #551734, #581441.
+
+  [ Sebastien Bacher ]
+  * debian/evince-commin.install: install the thumbnailer entry
+
+  [ Michael Biebl ]
+  * New upstream release.
+  * debian/patches/01_configure-gdk-targets.patch: Update configure check for
+    smclient support. With GDK 3.0 the target variable was renamed to targets.
+
+ -- Michael Biebl <biebl@debian.org>  Thu, 30 Jun 2011 02:58:49 +0200
+
+evince (3.0.0-3) experimental; urgency=low
+
+  [ Josselin Mouette ]
+  * Drop unneeded build-dependency on gir-repository-dev.
+
+ -- Frederic Peters <fpeters@debian.org>  Wed, 20 Apr 2011 08:15:04 +0200
+
+evince (3.0.0-2) experimental; urgency=low
+
+  * debian/control.in: add dependency on gsettings-desktop-schemas
+
+ -- Frederic Peters <fpeters@debian.org>  Thu, 14 Apr 2011 16:20:57 +0200
+
+evince (3.0.0-1) experimental; urgency=low
+
+  * New upstream release.
+
+  [ Josselin Mouette ]
+  * Fix indentation in package description. Closes: #609770.
+
+  [ Emilio Pozuelo Monfort ]
+  * debian/rules:
+    - Don't put evince-gtk's debugging symbols in evince-dbg, as they
+      clash with those from evince itself. Closes: #610856.
+
+  [ Frederic Peters ]
+  * debian/control.in:
+    + Update list of build dependencies for new release.
+    + Make the -dev package depend on the gir package.
+    + Add build-dependency on dh-autoreconf.
+    + Update libevince3-3 description to note the removal of the pixbuf and
+      impress backends.
+    + Update evince-gtk description as evince doesn't depend on GConf.
+  * debian/rules:
+    + include dh-autoreconf
+    + update configure flags (pixbuf and impress backends have been removed).
+  * debian/patches/01_dvi_security.patch: removed, upstream.
+  * debian/patches/00_gir-libdocument-library-path.patch: fix call to
+    g-ir-scanner to make it find libdocument3.
+  * debian/evince-common.install: install GSettings schemas.
+
+ -- Frederic Peters <fpeters@debian.org>  Thu, 14 Apr 2011 15:28:56 +0200
+
+evince (2.32.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Refresh debian/patches/02_link_ice.patch.
+  * debian/patches/03_dvi_security_CVE-2010-0433.patch:
+    - Fix another buffer overflow in the dvi-backend. CVE-2010-0433
+      Patch cherry-picked from upstream Git. Closes: #614668
+  * debian/control.in
+    - Drop Build-Depends on libdbus-glib-1-dev (ported to GDBus).
+    - Bump Build-Depends on libgtk2.0-dev to (>= 2.21.5).
+    - Bump Build-Depends on libglib2.0-dev to (>= 2.25.11).
+    - Bump Build-Depends on libpoppler-glib-dev to (>= 0.14.0).
+    - Add Build-Depends on libcairo2-dev (>= 1.9.10) and
+      libgail-dev (>= 2.21.5).
+    - Bump Standards-Version to 3.9.2. No further changes.
+  * Update libevince for soname bump from 2 → 3.
+  * debian/evince-common.install:
+    - Install gsettings schemas and gconf conversion script.
   * debian/patches/06_new_poppler_api_update.patch
-    - fix for changes in poppler API (LP: #708404)
+    - Update pdf_document_get_info to new poppler API. Patch cherry-picked
+      from upstream Git.
+  * Bump debhelper compatibility level to 7.
+    - Update Build-Depends on debhelper.
+    - Strip debian/tmp/ from .install files.
+  * debian/watch: Switch to .bz2 tarballs.
+  * Use dh_lintian to install the override files.
 
- -- Dennis Sheil <dennisdebian@vartmp.com>  Tue, 01 Feb 2011 06:42:06 -0500
+ -- Michael Biebl <biebl@debian.org>  Thu, 30 Jun 2011 01:29:48 +0200
 
-evince (2.32.0-0ubuntu8) natty; urgency=low
+evince (2.30.3-3) unstable; urgency=low
 
-  * debian/patches/05_library-path.patch: Include the path to libdocument
-    when building gobject introspection data for libevview3
+  [ Josselin Mouette ]
+  * Fix indentation in package description. Closes: #609770.
 
- -- Luke Yelavich <themuso@ubuntu.com>  Tue, 25 Jan 2011 14:29:17 +1100
-
-evince (2.32.0-0ubuntu7) natty; urgency=low
-
-  * Fix FTBFS with ld.gold.
-
- -- Matthias Klose <doko@ubuntu.com>  Wed, 19 Jan 2011 05:03:02 +0100
-
-evince (2.32.0-0ubuntu6) natty; urgency=low
-
-  * Rebuild for new poppler glib ABI
-
- -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 14 Jan 2011 02:27:16 +0000
-
-evince (2.32.0-0ubuntu5) natty; urgency=low
-
-  * debian/apparmor-profile.abstraction:
-    - deny access to kwallet, chromium configuration, writing to .pki/nssdb/*,
-      and some popular mail client files (LP: #698194)
-    - add ibus abstraction
-    - clean out some redundant abstraction includes
-
- -- Jamie Strandboge <jamie@ubuntu.com>  Fri, 07 Jan 2011 10:26:10 -0600
-
-evince (2.32.0-0ubuntu4) natty; urgency=low
-
-  * SECURITY UPDATE: arbitrary code execution via multiple dvi backend
-    overflows
-    - debian/patches/03_CVE-2010-264x.patch: add bounds checking in
-      backend/dvi/mdvi-lib/{afmparse,dviread,pk,tfmfile,vf}.c.
-    - CVE-2010-2640
-    - CVE-2010-2641
-    - CVE-2010-2642
-    - CVE-2010-2643
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 03 Jan 2011 11:30:16 -0500
-
-evince (2.32.0-0ubuntu3) natty; urgency=low
-
-  * debian/control.in:
-    - Rename gir1.0 to gir1.2 following abi changes
-
- -- Michael Terry <mterry@ubuntu.com>  Thu, 16 Dec 2010 15:23:42 -0500
-
-evince (2.32.0-0ubuntu2) natty; urgency=low
-
-  * debian/control:
-    - Use standards-version 3.9.1
-  * debian/patches/02_libice.patch:
-   - Link against libice to fix FTBFS
-
-  [ Jamie Strandboge ]
-  * debian/apparmor-profile.abstraction: allow reading of /etc/texmf/ and
-    /etc/texmf/** (LP: #650533)
-  * debian/apparmor-profile*: allow fdf files (LP: #607573)
-
- -- Robert Ancell <robert.ancell@canonical.com>  Mon, 06 Dec 2010 15:18:49 +1100
-
-evince (2.32.0-0ubuntu1) maverick; urgency=low
-
-  * New upstream version
-  * 02_fix_ftbfs_with_disable_dbus.patch:
-    - Dropped, applied upstream
-
- -- Michael Terry <mike@mterry.name>  Mon, 27 Sep 2010 15:41:55 -0400
-
-evince (2.31.92-0ubuntu2) maverick; urgency=low
-
+  [ Emilio Pozuelo Monfort ]
   * debian/rules:
-    - remove debian/evince-gtk/usr/lib/evince/* instead of
-      debian/evince-gtk/usr/lib/evince/2 for not overwriting backend library
-      package (LP: #637412)
-  * debian/evince-gtk.install:
-    - Install gsettings schemas
+    - Don't put evince-gtk's debugging symbols in evince-dbg, as they
+      clash with those from evince itself. Closes: #610856.
+  * Remove gir1.0-evince-2.30 since nothing uses it, to ease the gir1.2
+    transition.
+  * debian/patches/02_link_ice.patch:
+    - Link against libICE since eggsmclient uses it.
+  * Use dh-autoreconf for the above patch.
 
- -- Didier Roche <didrocks@ubuntu.com>  Tue, 14 Sep 2010 00:02:31 +0200
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Wed, 16 Feb 2011 21:22:17 +0000
 
-evince (2.31.92-0ubuntu1) maverick; urgency=low
+evince (2.30.3-2) unstable; urgency=medium
 
-  * New upstream release:
-    - Change gsettings schema path from /apps/evince to
-      /org/gnome/evince (Christian Persch)
-    - A D-Bus signal is now emitted when document is loaded
-      ( José Aliste)
-    - Use GConf again for lockdown settings (Christian Persch)
-    * Fix a crash during selection when evince is built with gtk2
-      (Carlos Garcia Campos)
-    * Evince daemon can spawn an evince instance when finding a
-      document (José Aliste)
-  * debian/patches/02_fix_ftbfs_with_disable_dbus.patch:
-    condition ev_window_emit_doc_loaded to #ifdef ENABLE_DBUS as the
-    signal is added only with dbus activated
-  * remove debian/patches/90_git_crash_selection.patch
+  * Fix PostScript capitalization. Closes: #591872.
+  * 01_dvi_security.patch: security fix from upstream git.
+    CVE-2010-2640, CVE-2010-2641, CVE-2010-2642 and  CVE-2010-2643.
+    Closes: #609534.
 
- -- Didier Roche <didrocks@ubuntu.com>  Mon, 13 Sep 2010 13:14:24 +0200
-
-evince (2.31.90-0ubuntu2) maverick; urgency=low
-
-  * debian/control.in: 
-    - updated the binary transition version (lp: #622150)
-    - don't build-depends on gir-repository-dev that's not required
-  * 90_git_crash_selection.patch: 
-    - git change to fix the viewer crashing when using the selection
-      (lp: #622344)
-
- -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 06 Sep 2010 22:58:57 +0200
-
-evince (2.31.90-0ubuntu1) maverick; urgency=low
-
-  * New upstream release
-  * Move gir1.0-evince-2.30 -> gir1.0-evince-2.32,
-    libevdocument2 -> libevdocument3,
-    libevview2 -> libevview3
-    * Update shlibs
-
- -- Robert Ancell <robert.ancell@canonical.com>  Wed, 18 Aug 2010 17:00:01 +1000
-
-evince (2.31.6.1-0ubuntu2) maverick; urgency=low
-
-  * debian/control:
-    - Build-depend on libgail-dev
-
- -- Robert Ancell <robert.ancell@canonical.com>  Tue, 17 Aug 2010 17:13:19 +1000
-
-evince (2.31.6.1-0ubuntu1) maverick; urgency=low
-
-  * New upstream release
-  * debian/control
-    - Build-depend on gnome-common and dh-autoreconf
-    - Bump build-depends on libglib2.0-dev, libgtk2.0-dev, libpoppler-glib-dev
-    - Add build-depend on libcairo2-dev
-    - Drop build-depend on libdbus-glib-1-dev
-  * debian/evince.install:
-    - Install gsettings schemas
-  * debian/rules:
-    - Use autoreconf.mk
-
- -- Robert Ancell <robert.ancell@canonical.com>  Tue, 17 Aug 2010 14:09:13 +1000
-
-evince (2.30.3-1ubuntu4) maverick; urgency=low
-
-  * debian/control*: Build-Depends on debhelper >= 7.4.20ubuntu5
-  * debian/rules: adjust for dh_apparmor
-  * debian/evince-common.post*: remove AppArmor rules and just use debhelper
-  * debian/apparmor-profile.abstraction:
-    - use dbus-session abstraction instead of dbus
-    - use /usr/bin/dvipdfmx for DVI printing (LP: #570955)
-
- -- Jamie Strandboge <jamie@ubuntu.com>  Fri, 06 Aug 2010 07:09:38 -0500
-
-evince (2.30.3-1ubuntu3) maverick; urgency=low
-
-  * No-change upload to build against current poppler library ABI.
-
- -- Didier Roche <didrocks@ubuntu.com>  Thu, 05 Aug 2010 12:48:16 +0200
-
-evince (2.30.3-1ubuntu2) maverick; urgency=low
-
-  * debian/control.in:
-    update Replaces because of last lucid SRU versions (LP: #607530, #605824,
-    #609109)
-
- -- Didier Roche <didrocks@ubuntu.com>  Sat, 24 Jul 2010 15:07:04 +0200
-
-evince (2.30.3-1ubuntu1) maverick; urgency=low
-
-  * Merge with Debian unstable
-
- -- Robert Ancell <robert.ancell@canonical.com>  Wed, 14 Jul 2010 12:03:00 +1000
+ -- Josselin Mouette <joss@debian.org>  Mon, 10 Jan 2011 19:03:57 +0100
 
 evince (2.30.3-1) unstable; urgency=low
 
@@ -246,91 +191,6 @@ evince (2.30.3-1) unstable; urgency=low
   * 01_dotdir_crash.patch: dropped, merged upstream.
 
  -- Josselin Mouette <joss@debian.org>  Wed, 07 Jul 2010 20:31:24 +0200
-
-evince (2.30.3-0ubuntu3) maverick; urgency=low
-
-  * debian/apparmor-profile.abstraction:
-    - allow read access to /var/lib/ghostscript/** (LP: #599184)
-    - allow ixr for tar, to allow opening of cbt files
-    - allow ixr for 7za, to allow opening of cbz files when using p7zip-full
-    - allow ixr for zipnote, to allow opening of cbz files with newer evince
-      (LP: #599169)
-
- -- Jamie Strandboge <jamie@ubuntu.com>  Tue, 06 Jul 2010 12:04:37 -0500
-
-evince (2.30.3-0ubuntu2) maverick; urgency=low
-
-  * New upstream release:
-    - Fix cbz comics (Juanjo Marín)
-    - Don't save print settings that are document specific into global
-      file, since they are already saved in per file metadata
-      (Carlos Garcia Campos)
-    - Reload presentation view when document changes (Carlos Garcia Campos)
-      (LP: #594967)
-    - Fix opening cbz files with [] in archive (Juanjo Marín)
-    - Fix fade animations in presentation mode (Carlos Garcia Campos)
-    - Fix a crash when starting animations in presentation mode
-      (Carlos Garcia Campos)
-    - Fix localization on Windows (Hib Eris)
-    - Allow opening documents specified by relative path in
-      evince-previewer (Marek Kasik)
-    - Fix opening files with '#' in its name (Carlos Garcia Campos)
-    - Accept input focus on annotation windows (Carlos Garcia Campos)
-    - Respect GNOME22_USER_DIR env variable in ev-daemon (Carlos
-      Garcia Campos)
-    - Fix a crash when user directory doesn't exist (Carlos Garcia Campos)
-    - Translation updates
-  * debian/rules:
-    - bump DEB_DH_MAKESHLIBS_ARGS
-  * Remove debian/patches/02_fix_dot_dir_creation.patch,
-    debian/patches/03_fix_opening_hash_filename.patch:
-    - in current release
-
- -- Didier Roche <didrocks@ubuntu.com>  Mon, 28 Jun 2010 10:15:25 +0200
-
-evince (2.30.1-3ubuntu2) maverick; urgency=low
-
-  * debian/rules:
-    - bump DEB_DH_MAKESHLIBS_ARGS to not have people trying partial
-      upgrade with apt-get install evince and not having new
-      libevdocument2 version (some files have moved between package)
-      (LP: #589194)
-
- -- Didier Roche <didrocks@ubuntu.com>  Tue, 08 Jun 2010 09:31:18 +0200
-
-evince (2.30.1-3ubuntu1) maverick; urgency=low
-
-  * Merge from debian unstable, remaining Ubuntu changes:
-  * debian/control.in:
-    - Build-depend on liblaunchpad-integration-dev
-    - Build-depend on hardening-includes
-    - Add libevview{2,-dev}, libevdocument{2,-dev}, libevince{2,-dev}
-    - evince-common replaces evince/evince-gtk << 2.30.1-2
-  * debian/rules:
-    - Run autotools on build
-    - Add MAKESHLIB_ARGS for new libevview2, libevdocument2
-    - Add hardening-includes to gain PIE security build.
-    - Install apport hook
-  * debian/evince.apport:
-    - Apport hook
-  * debian/evince.dirs:
-    - Add usr/share/apport/package-hooks
-  * debian/evince-common.install:
-    - Install evince manpage
-  * debian/evince-common.dirs:
-  * debian/evince-common.postinst:
-  * debian/evince-common.postrm:
-  * debian/apparmor-profile:
-  * debian/apparmor-profile.abstraction:
-    - Apparmor profile
-  * debian/patches/01_lpi.patch:
-    - Launchpad integration
-  * debian/patches/03_fix_opening_hash_filename.patch:
-    - Fix filename creation when hash filename present
-  * debian/watch:
-    - Watch for unstable releases
-
- -- Robert Ancell <robert.ancell@canonical.com>  Tue, 01 Jun 2010 13:26:00 +1000
 
 evince (2.30.1-3) unstable; urgency=low
 

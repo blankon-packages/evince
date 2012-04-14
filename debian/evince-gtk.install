@@ -1,2 +1,0 @@
-debian/lintian/evince-gtk /usr/share/lintian/overrides/
-debian/tmp/usr/share/glib-2.0/schemas

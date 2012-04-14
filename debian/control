@@ -6,61 +6,65 @@
 Source: evince
 Section: gnome
 Priority: optional
-Maintainer: BlankOn Developers <blankon-dev@googlegroups.com>
-XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Vcs-Bzr: http://dev.blankonlinux.or.id/bzr/pattimura/evince
-Build-Depends: cdbs,
-               debhelper (>= 7.4.20ubuntu5),
-               intltool (>= 0.35.0),
+Source: lightdm
+Section: x11
+Priority: optional
+Maintainer: Blankon Developers <blankon-dev@googlegroups.com>
+XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Uploaders: Frederic Peters <fpeters@debian.org>, Michael Biebl <biebl@debian.org>
+Build-Depends: cdbs (>= 0.4.90),
+               debhelper (>= 8),
                dh-autoreconf,
-               gnome-common,
+               intltool (>= 0.35.0),
                gnome-pkg-tools (>= 0.10),
                gnome-doc-utils (>= 0.3.2),
                gtk-doc-tools (>= 1.0),
                libx11-dev,
-               libcairo2-dev (>= 1.9.10),
-               libgtk2.0-dev (>= 2.21.5),
-               libglib2.0-dev (>= 2.25.11),
-               libgail-dev (>= 2.21.5),
+               libcairo2-dev (>= 1.10.0),
+               libgtk-3-dev (>= 3.0.2),
+               libgail-3-dev (>= 3.0.2),
+               libglib2.0-dev (>= 2.25.1),
                libgnome-keyring-dev (>= 2.22.0),
-               gnome-icon-theme (>= 2.17.1),
+               komodo-icon-theme,
                libxml2-dev (>= 2.5.0),
                libsm-dev (>= 2:1.0.0),
-               libgconf2-dev,
                zlib1g-dev,
-               libnautilus-extension-dev,
-               libpoppler-glib-dev (>= 0.14.0),
+               libnautilus-extension-dev (>= 2.91.4),
+               libpoppler-glib-dev (>= 0.16.0),
                libspectre-dev (>= 0.2.0),
                libtiff4-dev,
                libdjvulibre-dev (>= 3.5.17),
                libkpathsea-dev,
                libt1-dev,
+               libgxps-dev (>= 0.2.1),
                autotools-dev,
-               hardening-includes,
-               libgirepository1.0-dev (>= 0.6.7),
-               gobject-introspection (>= 0.6.7),
+               gobject-introspection (>= 0.9.12-4~),
+               libgirepository1.0-dev (>= 0.9.12),
                gir1.2-glib-2.0,
-               gir1.2-gtk-2.0
-Standards-Version: 3.9.1
+               gir1.2-gtk-3.0,
+               gsettings-desktop-schemas-dev
+Standards-Version: 3.9.2
 Homepage: http://www.gnome.org/projects/evince/
+Vcs-Svn: svn://anonscm.debian.org/svn/pkg-gnome/desktop/unstable/evince
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/evince
 
 Package: evince
 Conflicts: evince-gtk
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
+         libevince3-3 (= ${binary:Version}),
          evince-common (>= ${gnome:Version}),
          evince-common (<< ${gnome:NextVersion}),
-         gnome-icon-theme (>= 2.17.1),
+         komodo-icon-theme,
          shared-mime-info
 Recommends: dbus-x11,
             gvfs
 Provides: pdf-viewer,
           postscript-viewer,
           djvu-viewer
-Suggests: unrar, poppler-data, nautilus, apparmor
-Description: Document (postscript, pdf) viewer
+Suggests: unrar, poppler-data, nautilus
+Description: Document (PostScript, PDF) viewer
  Evince is a simple multi-page document viewer.  It can display and print
  PostScript (PS), Encapsulated PostScript (EPS), DJVU, DVI and Portable
  Document Format (PDF) files.
@@ -73,8 +77,9 @@ Section: debug
 Priority: extra
 Architecture: any
 Depends: ${misc:Depends},
-         evince (= ${binary:Version})
-Description: Document (postscript, pdf) viewer - debugging symbols
+         evince (= ${binary:Version}),
+         libevince3-3 (= ${binary:Version})
+Description: Document (PostScript, PDF) viewer - debugging symbols
  Evince is a simple multi-page document viewer.  It can display and print
  PostScript (PS), Encapsulated PostScript (EPS), DJVU, DVI and Portable
  Document Format (PDF) files.
@@ -90,16 +95,17 @@ Conflicts: evince
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
+         libevince3-3 (= ${binary:Version}),
          evince-common (>= ${gnome:Version}),
          evince-common (<< ${gnome:NextVersion}),
-         gnome-icon-theme (>= 2.17.1),
+         komodo-icon-theme,
          shared-mime-info
 Recommends: dbus-x11
 Provides: pdf-viewer,
           postscript-viewer,
           djvu-viewer
 Suggests: gvfs, unrar, poppler-data, nautilus
-Description: Document (postscript, pdf) viewer (GTK+ version)
+Description: Document (PostScript, PDF) viewer (GTK+ version)
  Evince is a simple multi-page document viewer.  It can display and print
  PostScript (PS), Encapsulated PostScript (EPS), DJVU, DVI and Portable
  Document Format (PDF) files.
@@ -107,82 +113,14 @@ Description: Document (postscript, pdf) viewer (GTK+ version)
  copying text to the clipboard, hypertext navigation, and
  table-of-contents bookmarks.
  .
- This version of evince is built without GConf and GNOME keyring 
- support.
-
-Package: libevview-dev
-Section: libdevel
-Architecture: any
-Depends: ${misc:Depends},
-         libevview3 (= ${binary:Version}),
-         libgtk2.0-dev (>= 2.21.5),
-         libglib2.0-dev (>= 2.25.11)
-Description: GNOME document viewer view library - development headers
- Evince is a simple multi-page document viewer.  It can display and print
- PostScript (PS), Encapsulated PostScript (EPS), DJVU, DVI and Portable
- Document Format (PDF) files.
- When supported by the document, it also allows searching for text,
- copying text to the clipboard, hypertext navigation, and
- table-of-contents bookmarks.
- .
- This package contains the development headers for libview documentation
- API shared library.
-
-Package: libevview3
-Section: libs
-Architecture: any
-Depends: ${misc:Depends},
-         ${shlibs:Depends}
-Description: GNOME document viewer view library
- Evince is a simple multi-page document viewer.  It can display and print
- PostScript (PS), Encapsulated PostScript (EPS), DJVU, DVI and Portable
- Document Format (PDF) files.
- When supported by the document, it also allows searching for text,
- copying text to the clipboard, hypertext navigation, and
- table-of-contents bookmarks.
- .
- This package contains the libview documentation API shared library.
-
-Package: libevdocument-dev
-Section: libdevel
-Architecture: any
-Depends: ${misc:Depends},
-         libevdocument3 (= ${binary:Version}),
-         libgtk2.0-dev (>= 2.12),
-         libglib2.0-dev (>= 2.18)
-Replaces: evince (<< 2.30.3-1)
-Description: GNOME document viewer backend library - development headers
- Evince is a simple multi-page document viewer.  It can display and print
- PostScript (PS), Encapsulated PostScript (EPS), DJVU, DVI and Portable
- Document Format (PDF) files.
- When supported by the document, it also allows searching for text,
- copying text to the clipboard, hypertext navigation, and
- table-of-contents bookmarks.
- .
- This package contains the development headers for libdocument documentation
- API shared library.
-
-Package: libevdocument3
-Section: libs
-Architecture: any
-Depends: ${misc:Depends},
-         ${shlibs:Depends}
-Replaces: evince (<< 2.30.3-1)
-Description: GNOME document viewer backend library
- Evince is a simple multi-page document viewer.  It can display and print
- PostScript (PS), Encapsulated PostScript (EPS), DJVU, DVI and Portable
- Document Format (PDF) files.
- When supported by the document, it also allows searching for text,
- copying text to the clipboard, hypertext navigation, and
- table-of-contents bookmarks.
- .
- This package contains the libdocument documentation API shared library.
+ This version of evince is built without GNOME keyring support.
 
 Package: evince-common
 Architecture: all
-Depends: ${misc:Depends}
-Replaces: evince (<< 2.30.3-1ubuntu1), evince-gtk (<< 2.30.1-2)
-Description: Document (postscript, pdf) viewer - common files
+Depends: ${misc:Depends},
+         gsettings-desktop-schemas
+Replaces: evince (<< 2.26.2), evince-gtk (<< 2.26.2)
+Description: Document (PostScript, PDF) viewer - common files
  Evince is a simple multi-page document viewer.  It can display and print
  PostScript (PS), Encapsulated PostScript (EPS), DJVU, DVI and Portable
  Document Format (PDF) files.
@@ -192,17 +130,49 @@ Description: Document (postscript, pdf) viewer - common files
  .
  This package contains shared files for evince and evince-gtk packages.
 
-
-Package: gir1.2-evince-2.32
+Package: libevince3-3
+Architecture: any
 Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Replaces: evince (<< 2.26.2), evince-gtk (<< 2.26.2), libevince3
+Breaks: libevince3
+Description: Document (PostScript, PDF) rendering library
+ This package contains evince-related libraries for rendering and displaying
+ Evince documents like PostScript (PS), Encapsulated PostScript (EPS), DJVU,
+ DVI and Portable Document Format (PDF) files.
+  * libevdocument, which performs the rendering of the documents
+  * libevview, which provides GTK+ widgets for displaying documents
+ .
+ It is shipped with the ps, pdf, dvi, tiff, djvu, comics pixbuf backends.
+
+Package: libevince-dev
+Architecture: any
+Section: libdevel
+Depends: libevince3-3 (= ${binary:Version}),
+         gir1.2-evince-3.0 (= ${binary:Version}),
+         ${misc:Depends},
+         libgtk-3-dev (>= 3.0.2),
+         libglib2.0-dev (>= 2.25.1)
+Replaces: evince (<< 2.26.2), evince-gtk (<< 2.26.2)
+Description: Document (PostScript, PDF) rendering library - development files
+ This package contains evince-related libraries for rendering and displaying
+ Evince documents like PostScript (PS), Encapsulated PostScript (EPS), DJVU,
+ DVI and Portable Document Format (PDF) files.
+ * libevdocument, which performs the rendering of the documents
+ * libevview, which provides GTK+ widgets for displaying documents
+ .
+ This package provides the development headers, static libraries and 
+ documentation.
+
+Package: gir1.2-evince-3.0
+Section: introspection
 Architecture: any
 Depends: ${gir:Depends},
          ${shlibs:Depends},
          ${misc:Depends}
-Provides: gir1.2-evince-document-2.32,
-          gir1.2-evince-view-2.32
-Conflicts: gir1.0-evince-2.32
-Replaces: gir1.0-evince-2.32
+Provides: gir1.2-evince-document-3.0,
+          gir1.2-evince-view-3.0
 Description: GObject introspection data for the libevince library
  This package contains introspection data for the libevince library.
  .

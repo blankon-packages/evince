@@ -1,5 +1,0 @@
-debian/tmp/usr/lib/libevview.{so,a}
-debian/tmp/usr/lib/pkgconfig/evince-view-*
-debian/tmp/usr/include/evince/*/*view*
-debian/tmp/usr/share/gtk-doc/html/libevview*
-debian/tmp/usr/share/gir-1.0/EvinceView-*.gir

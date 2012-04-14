@@ -1,16 +1,11 @@
 #!/usr/bin/make -f
 
-include /usr/share/hardening-includes/hardening.make
-CFLAGS += $(HARDENING_CFLAGS)
-CXXFLAGS += $(HARDENING_CFLAGS)
-LDFLAGS += $(HARDENING_LDFLAGS)
-
+include /usr/share/cdbs/1/rules/autoreconf.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/gnome.mk
-include /usr/share/cdbs/1/rules/autoreconf.mk
 include /usr/share/gnome-pkg-tools/1/rules/uploaders.mk
 include /usr/share/gnome-pkg-tools/1/rules/gnome-version.mk
--include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
+include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
 
 DEB_BUILDDIR := $(CURDIR)/debian/build/evince
 DEB_BUILDDIR_evince-gtk := $(CURDIR)/debian/build/evince-gtk
@@ -21,14 +16,14 @@ DEB_CONFIGURE_EXTRA_FLAGS := --disable-scrollkeeper \
 			--enable-djvu \
 			--enable-dvi \
 			--enable-t1lib \
-			--enable-pixbuf \
+			--enable-xps \
 			--enable-comics \
-			--enable-impress \
-			--enable-introspection=yes
+			--enable-introspection
 
-DEB_DH_MAKESHLIBS_ARGS += --exclude=libevince-properties-page.so
-DEB_DH_MAKESHLIBS_ARGS_libevview3 += -V 'libevview3 (>= 2.31.90-0ubuntu1)'
-DEB_DH_MAKESHLIBS_ARGS_libevdocument3 += -V 'libevdocument3 (>= 2.31.90-0ubuntu1)'
+DEB_DH_MAKESHLIBS_ARGS += -X /usr/lib/nautilus/ -X /usr/lib/evince/ \
+	-V'libevince3-3 (>= 3.3.90)'
+
+DEB_DH_STRIP_ARGS_evince-gtk =
 
 #cdbs should do this, but doesn't (see #424636)
 clean::
@@ -42,10 +37,8 @@ $(DEB_BUILDDIR_evince-gtk)/config.status:
 			$(cdbs_configure_flags) \
 			$(DEB_CONFIGURE_EXTRA_FLAGS) \
 			--without-keyring \
-			--without-gconf \
 			--disable-nautilus \
-			--disable-dbus \
-			--enable-introspection=no \
+			--disable-introspection \
 			--disable-gtk-doc \
 			$(DEB_CONFIGURE_USER_FLAGS)
 
@@ -61,20 +54,7 @@ install/evince-gtk::
 	rm -rf debian/evince-gtk/usr/lib/nautilus
 	rm -rf debian/evince-gtk/usr/lib/pkgconfig
 	rm -rf debian/evince-gtk/usr/lib/girepository*
-	rm -rf debian/evince-gtk/usr/lib/evince/*
+	rm -rf debian/evince-gtk/usr/lib/evince/3
 
 binary-install/evince-common::
 	rm -rf debian/evince-common/usr/share/gtk-doc
-	cp debian/apparmor-profile debian/evince-common/etc/apparmor.d/usr.bin.evince
-	cp debian/apparmor-profile.abstraction debian/evince-common/etc/apparmor.d/abstractions/evince
-	cp debian/evince.apport debian/evince-common/usr/share/apport/package-hooks/source_evince.py
-	dh_apparmor --profile-name=usr.bin.evince -pevince-common
-	cd po; intltool-update --pot --verbose
-
-binary-post-install/evince::
-	# check for missing MIME types
-	desktop-check-mime-types
-
-common-binary-fixup-arch::
-	dh_girepository -pgir1.2-evince-2.32
-
