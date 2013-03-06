@@ -1,3 +1,20 @@
+evince (3.6.1-1blankon1) suroboyo; urgency=low
+
+  * Upload to suroboyo 
+
+ -- Rahman Yusri Aftian <aftian@di.blankon.in>  Wed, 06 Mar 2013 22:58:18 +0700
+
+evince (3.6.1-1) experimental; urgency=low
+
+  * Team upload.
+  * debian/patches/03_nodisplay.patch: add upstream and Debian bug references
+  * New upstream release (Closes: #690792)
+    - update symbols files, dropping some removed private symbols
+    - update build-dependencies
+    - help is now in yelp format
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 22 Oct 2012 18:47:56 +0100
+
 evince (3.4.0-3.1blankon1) rote-updates; urgency=low
 
   * New upstream release 
