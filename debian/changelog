@@ -1,3 +1,29 @@
+evince (3.7.90-1blankon1) suroboyo; urgency=low
+
+  * New upstream release
+  * debian/control.in changes maintainer
+
+ -- Mahyuddin <dotovr@di.blankon.in>  Mon, 18 Mar 2013 20:13:30 +0700
+
+evince (3.7.90-1) experimental; urgency=low
+
+  [ Josselin Mouette ]
+  * Finally remove evince.mime for good.
+
+  [ Andreas Henriksson ]
+  * New upstream release.
+    - bump gtk+ build-dependency to >= 3.7.5 according to configure.ac
+    - also replace libgnome-keyring-dev with libsecret-1-dev (>= 0.5)
+  * Update debian/libevdocument3-4.symbols:
+    - dropping (optional)ev_{doc,fc}_mutex@Base 3.3.90
+    - adding new symbols
+  * Update debian/libevview3-3.symbols:
+    - dropping ev_loading_window_{get_size,get_type,move,new}@Base 3.0.2
+      and ev_view_accessible_factory_get_type@Base 3.0.2
+    - adding new symbols
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 15 Mar 2013 18:58:50 +0100
+
 evince (3.6.1-1blankon1) suroboyo; urgency=low
 
   * Upload to suroboyo 
