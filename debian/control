@@ -6,8 +6,8 @@
 Source: evince
 Section: gnome
 Priority: optional
-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Andreas Henriksson <andreas@fatal.se>, Michael Biebl <biebl@debian.org>
+Maintainer: BlankOn Developers <blankon-dev@googlegroups.com>
+Uploaders: Andreas Henriksson <andreas@fatal.se>, Emilio Pozuelo Monfort <pochu@debian.org>, Michael Biebl <biebl@debian.org>
 Build-Depends: cdbs (>= 0.4.90),
                debhelper (>= 8),
                dpkg-dev (>= 1.16.1),
@@ -197,4 +197,3 @@ Description: GObject introspection data for the evince libraries
  .
  It can be used by packages using the GIRepository format to generate
  dynamic bindings.
-
