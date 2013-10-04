@@ -21,7 +21,8 @@ DEB_CONFIGURE_EXTRA_FLAGS := --disable-scrollkeeper \
 			--enable-t1lib \
 			--enable-xps \
 			--enable-comics \
-			--enable-introspection
+			--enable-introspection \
+			--with-libgrip=yes
 
 DEB_DH_MAKESHLIBS_ARGS += -X /usr/lib/nautilus/ -X /usr/lib/evince/ \
 	-V -- -c4
@@ -61,3 +62,10 @@ install/evince-gtk::
 
 binary-install/evince-common::
 	rm -rf debian/evince-common/usr/share/gtk-doc
+	cp debian/apparmor-profile debian/evince-common/etc/apparmor.d/usr.bin.evince
+	cp debian/apparmor-profile.abstraction debian/evince-common/etc/apparmor.d/abstractions/evince
+	cp debian/evince.apport debian/evince-common/usr/share/apport/package-hooks/source_evince.py
+	dh_apparmor --profile-name=usr.bin.evince -pevince-common
+	cd po; intltool-update --pot --verbose	
+	# save some space by not shipping the synctex video
+	find debian/evince-common/usr/share/help/ -name '*.ogv' -delete

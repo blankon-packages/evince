@@ -1,8 +1,51 @@
-evince (3.8.0-1blankon1) suroboyo; urgency=low
+evince (3.10.0-0blankon1) suroboyo; urgency=low
+
+  * New upstream release
+  * debian/libevdocument3-4.symbols, libevview3-3.symbols: updated
+  * New upstream release
+  * debian/control.in: bump b-d on glib, gtk and poppler
+  * debian/patches/11_grip_gestures.patch: Refreshed
+  * debian/libevdocument3-4.symbols, libevview3-3.symbols: updated
+
+ -- Rahman Yusri Aftian <aftian@di.blankon.in>  Fri, 04 Oct 2013 08:44:33 +0700
+
+evince (3.8.3-2) unstable; urgency=low
+
+  * Depend on gnome-icon-theme-symbolic for the symbolic icons used in the
+    redesigned UI. Closes: #717057
+
+ -- Michael Biebl <biebl@debian.org>  Thu, 05 Sep 2013 17:17:59 +0200
+
+evince (3.8.3-1) unstable; urgency=low
 
   * New upstream release.
+  * Bump Standards-Version to 3.9.4. No further changes.
+  * debian/patches/01-poppler-0.18-compat.patch: Make it possible to compile
+    evince against poppler 0.18 since unstable doesn't have 0.20 yet.
+  * Lower the Build-Depends on libpoppler-glib-dev to (>= 0.18.0) again for
+    now.
+  * Upload to unstable.
 
- -- Aris Febrianto <ariesfebrianto@gmail.com>  Sat, 30 Mar 2013 02:29:34 +0700
+ -- Michael Biebl <biebl@debian.org>  Wed, 28 Aug 2013 01:54:46 +0200
+
+evince (3.8.2-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/evince-common.install,
+    debian/rules:
+    + Install the xpm icon from debian/rules.
+  * debian/rules:
+    + Take advantage of CDBS' flavor support.
+    + Drop --disable-scrollkeeper, no longer used.
+    + No need to remove /usr/share/gtk-doc from evince-common, we're
+      not installing it in the first place.
+    + Include utils.mk
+  * debian/evince-gtk.install,
+    debian/rules:
+    + Install what we need for evince-gtk from the install file
+      instead of installing everything and then removing various bits.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Sun, 02 Jun 2013 23:37:15 +0200
 
 evince (3.8.0-1) experimental; urgency=low
 
@@ -11,13 +54,6 @@ evince (3.8.0-1) experimental; urgency=low
       - Dropped, included upstream.
 
  -- Emilio Pozuelo Monfort <pochu@debian.org>  Thu, 28 Mar 2013 23:42:03 +0100
-
-evince (3.7.90-1blankon1) suroboyo; urgency=low
-
-  * New upstream release
-  * debian/control.in changes maintainer
-
- -- Mahyuddin <dotovr@di.blankon.in>  Mon, 18 Mar 2013 20:13:30 +0700
 
 evince (3.7.90-1) experimental; urgency=low
 
@@ -38,12 +74,6 @@ evince (3.7.90-1) experimental; urgency=low
 
  -- Andreas Henriksson <andreas@fatal.se>  Fri, 15 Mar 2013 18:58:50 +0100
 
-evince (3.6.1-1blankon1) suroboyo; urgency=low
-
-  * Upload to suroboyo 
-
- -- Rahman Yusri Aftian <aftian@di.blankon.in>  Wed, 06 Mar 2013 22:58:18 +0700
-
 evince (3.6.1-1) experimental; urgency=low
 
   * Team upload.
@@ -54,22 +84,6 @@ evince (3.6.1-1) experimental; urgency=low
     - help is now in yelp format
 
  -- Simon McVittie <smcv@debian.org>  Mon, 22 Oct 2012 18:47:56 +0100
-
-evince (3.4.0-3.1blankon1) rote-updates; urgency=low
-
-  * New upstream release 
-
- -- Rahman Yusri Aftian <aftian@di.blankon.in>  Tue, 15 Jan 2013 02:23:01 +0000
-
-evince (3.4.0-3.1) unstable; urgency=low
-
-  * Non-maintainer Upload
-  * Support the rest of the mime types that evince used to support in
-    evince-gtk.mime and evince.mime. Closes: #658139. This also fixes
-    #619564, #627027, and #551734 which were related to evince.mime and
-    evince-gtk.mime. #581441 was fixed in shared-mime-info/1.0.
-
- -- Don Armstrong <don@debian.org>  Thu, 08 Nov 2012 10:32:12 -0800
 
 evince (3.4.0-3) unstable; urgency=low
 
@@ -111,13 +125,6 @@ evince (3.4.0-1) experimental; urgency=low
   * Mention support for XPS documents in the package description.
 
  -- Michael Biebl <biebl@debian.org>  Thu, 19 Apr 2012 15:22:50 +0200
-
-evince (3.3.90-1blankon1) rote; urgency=low
-
-  * Depends: komodo-icon-theme.
-  * debian/control maintainer
-
- -- Rahman Yusri Aftian <aftian@di.blankon.in>  Sat, 14 Apr 2012 04:58:35 +0000
 
 evince (3.3.90-1) experimental; urgency=low
 
