@@ -23,9 +23,9 @@ Build-Depends: cdbs (>= 0.4.90),
                libsm-dev (>= 2:1.0.0),
                zlib1g-dev,
                libnautilus-extension-dev (>= 2.91.4),
-               libpoppler-glib-dev (>= 0.24.0),
+               libpoppler-glib-dev (>= 0.18.0),
                libspectre-dev (>= 0.2.0),
-               libtiff5-dev | libtiff-dev,
+               libtiff4-dev,
                libdjvulibre-dev (>= 3.5.17),
                libkpathsea-dev,
                libt1-dev,
@@ -34,12 +34,10 @@ Build-Depends: cdbs (>= 0.4.90),
                gobject-introspection (>= 1.0),
                libgirepository1.0-dev (>= 1.0),
                gsettings-desktop-schemas-dev,
-               gnome-common,
-               dh-apparmor,
-               libgrip-dev (>= 0.3.1)
-Standards-Version: 3.9.3
+               gnome-common
+Standards-Version: 3.9.4
 Homepage: http://www.gnome.org/projects/evince/
-Vcs-Svn: svn://anonscm.debian.org/svn/pkg-gnome/desktop/unstable/evince
+Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/evince
 Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/evince
 
 Package: evince
@@ -51,7 +49,7 @@ Depends: ${shlibs:Depends},
          libevview3-3 (= ${binary:Version}),
          evince-common (>= ${gnome:Version}),
          evince-common (<< ${gnome:NextVersion}),
-         gnome-icon-theme (>= 2.17.1),
+         gnome-icon-theme-symbolic (>= 2.17.1),
          shared-mime-info
 Recommends: dbus-x11,
             gvfs
@@ -60,8 +58,7 @@ Provides: pdf-viewer,
           djvu-viewer
 Suggests: unrar,
           poppler-data,
-          nautilus,
-          apparmor
+          nautilus
 Description: Document (PostScript, PDF) viewer
  Evince is a simple multi-page document viewer.  It can display and print
  PostScript (PS), Encapsulated PostScript (EPS), DjVu, DVI, Portable
@@ -98,7 +95,7 @@ Depends: ${shlibs:Depends},
          libevview3-3 (= ${binary:Version}),
          evince-common (>= ${gnome:Version}),
          evince-common (<< ${gnome:NextVersion}),
-         gnome-icon-theme (>= 2.17.1),
+         gnome-icon-theme-symbolic (>= 2.17.1),
          shared-mime-info
 Recommends: dbus-x11
 Provides: pdf-viewer,
@@ -163,8 +160,8 @@ Depends: libevdocument3-4 (= ${binary:Version}),
          libevview3-3 (= ${binary:Version}),
          gir1.2-evince-3.0 (= ${binary:Version}),
          ${misc:Depends},
-         libgtk-3-dev (>= 3.8.0),
-         libglib2.0-dev (>= 2.36)
+         libgtk-3-dev (>= 3.0.2),
+         libglib2.0-dev (>= 2.34)
 Description: Document (PostScript, PDF) rendering library - development files
  This package contains evince-related libraries for rendering and displaying
  Evince documents like PostScript (PS), Encapsulated PostScript (EPS), DjVu,
