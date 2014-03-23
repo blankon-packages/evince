@@ -1,3 +1,9 @@
+evince (3.11.90-1blankon1) tambora; urgency=low
+
+  * New upstream release.
+
+ -- Aris Febrianto <ariesfebrianto@gmail.com>  Sun, 23 Mar 2014 15:46:14 +0700
+
 evince (3.11.90-1) experimental; urgency=medium
 
   [ Emilio Pozuelo Monfort ]
