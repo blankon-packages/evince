@@ -6,8 +6,7 @@
 Source: evince
 Section: gnome
 Priority: optional
-Maintainer: BlankOn Developers <blankon-dev@googlegroups.com>
-XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Uploaders: Andreas Henriksson <andreas@fatal.se>, Emilio Pozuelo Monfort <pochu@debian.org>, Michael Biebl <biebl@debian.org>
 Build-Depends: cdbs (>= 0.4.90),
                debhelper (>= 8),
@@ -30,10 +29,9 @@ Build-Depends: cdbs (>= 0.4.90),
                libnautilus-extension-dev (>= 2.91.4),
                libpoppler-glib-dev (>= 0.18.0),
                libspectre-dev (>= 0.2.0),
-               libtiff4-dev,
+               libtiff-dev,
                libdjvulibre-dev (>= 3.5.17),
                libkpathsea-dev,
-               libt1-dev,
                libgxps-dev (>= 0.2.1),
                autotools-dev,
                gobject-introspection (>= 1.0),

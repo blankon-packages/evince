@@ -1,3 +1,16 @@
+evince (3.11.90-1) experimental; urgency=medium
+
+  [ Emilio Pozuelo Monfort ]
+  * debian/control.in:
+    + Build depend on libtiff-dev instead of libtiff4-dev. Closes: #736001.
+
+  [ Andreas Henriksson ]
+  * New upstream release.
+  * Add one new symbol to debian/libevdocument3-4.symbols
+  * Add one new symbol to debian/libevview3-3.symbols
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 23 Feb 2014 20:11:04 +0100
+
 evince (3.10.3-0blankon1) suroboyo; urgency=low
 
   * New upstream release
