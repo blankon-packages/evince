@@ -1,7 +1,8 @@
 Source: evince
 Section: gnome
 Priority: optional
-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Maintainer: BLankOn Developers <blankon-dev@googlegroups.com>
+XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Uploaders: @GNOME_TEAM@
 Build-Depends: cdbs (>= 0.4.90),
                debhelper (>= 8),
@@ -13,18 +14,17 @@ Build-Depends: cdbs (>= 0.4.90),
                gtk-doc-tools (>= 1.0),
                libx11-dev,
                libcairo2-dev (>= 1.10.0),
-               libgtk-3-dev (>= 3.8.0),
+               libgtk-3-dev (>= 3.15.3),
                libgail-3-dev (>= 3.0.2),
                libglib2.0-dev (>= 2.36),
                libsecret-1-dev (>= 0.5),
-               gnome-icon-theme (>= 2.17.1),
+               adwaita-icon-theme,
                libxml2-dev (>= 2.5.0),
-               libsm-dev (>= 2:1.0.0),
                zlib1g-dev,
                libnautilus-extension-dev (>= 2.91.4),
                libpoppler-glib-dev (>= 0.18.0),
                libspectre-dev (>= 0.2.0),
-               libtiff-dev,
+               libtiff5-dev | libtiff-dev,
                libdjvulibre-dev (>= 3.5.17),
                libkpathsea-dev,
                libgxps-dev (>= 0.2.1),
@@ -32,7 +32,10 @@ Build-Depends: cdbs (>= 0.4.90),
                gobject-introspection (>= 1.0),
                libgirepository1.0-dev (>= 1.0),
                gsettings-desktop-schemas-dev,
-               gnome-common
+               gnome-common,
+               dh-apparmor,
+               libgrip-dev (>= 0.3.1),
+               libgnome-desktop-3-dev
 Standards-Version: 3.9.4
 Homepage: http://www.gnome.org/projects/evince/
 Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/evince
@@ -47,7 +50,7 @@ Depends: ${shlibs:Depends},
          libevview3-3 (= ${binary:Version}),
          evince-common (>= ${gnome:Version}),
          evince-common (<< ${gnome:NextVersion}),
-         gnome-icon-theme-symbolic (>= 2.17.1),
+         adwaita-icon-theme,
          shared-mime-info
 Recommends: dbus-x11,
             gvfs
@@ -56,7 +59,8 @@ Provides: pdf-viewer,
           djvu-viewer
 Suggests: unrar,
           poppler-data,
-          nautilus
+          nautilus,
+          apparmor
 Description: Document (PostScript, PDF) viewer
  Evince is a simple multi-page document viewer.  It can display and print
  PostScript (PS), Encapsulated PostScript (EPS), DjVu, DVI, Portable
@@ -93,7 +97,7 @@ Depends: ${shlibs:Depends},
          libevview3-3 (= ${binary:Version}),
          evince-common (>= ${gnome:Version}),
          evince-common (<< ${gnome:NextVersion}),
-         gnome-icon-theme-symbolic (>= 2.17.1),
+         adwaita-icon-theme,
          shared-mime-info
 Recommends: dbus-x11
 Provides: pdf-viewer,
@@ -158,8 +162,8 @@ Depends: libevdocument3-4 (= ${binary:Version}),
          libevview3-3 (= ${binary:Version}),
          gir1.2-evince-3.0 (= ${binary:Version}),
          ${misc:Depends},
-         libgtk-3-dev (>= 3.0.2),
-         libglib2.0-dev (>= 2.34)
+         libgtk-3-dev (>= 3.14.0),
+         libglib2.0-dev (>= 2.36)
 Description: Document (PostScript, PDF) rendering library - development files
  This package contains evince-related libraries for rendering and displaying
  Evince documents like PostScript (PS), Encapsulated PostScript (EPS), DjVu,

@@ -20,9 +20,10 @@ DEB_DH_INSTALL_ARGS_evince-gtk += --sourcedir=debian/install/evince-gtk
 DEB_CONFIGURE_EXTRA_FLAGS = \
 			--enable-djvu \
 			--enable-dvi \
-			--enable-t1lib \
+			--disable-t1lib \
 			--enable-xps \
-			--enable-comics
+			--enable-comics \
+			--with-libgrip=yes
 
 DEB_DH_MAKESHLIBS_ARGS += -X /usr/lib/nautilus/ -X /usr/lib/evince/ \
 	-V -- -c4
@@ -37,8 +38,14 @@ DEB_CONFIGURE_FLAGS_evince-gtk = \
 			--without-keyring \
 			--disable-nautilus \
 			--disable-introspection \
-			--disable-gtk-doc
+			--disable-gtk-doc \
+			--disable-libgnome-desktop
 
 install/evince-common::
+	cp debian/apparmor-profile debian/evince-common/etc/apparmor.d/usr.bin.evince
+	cp debian/apparmor-profile.abstraction debian/evince-common/etc/apparmor.d/abstractions/evince
+	cp debian/evince.apport debian/evince-common/usr/share/apport/package-hooks/source_evince.py
+	dh_apparmor --profile-name=usr.bin.evince -pevince-common
+	cd po; intltool-update --pot --verbose
 	dh_install -p${cdbs_curpkg} --ignore=debian/${cdbs_curpkg}.install \
 		debian/evince.xpm usr/share/pixmaps

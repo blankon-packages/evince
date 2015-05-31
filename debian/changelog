@@ -1,8 +1,162 @@
-evince (3.11.90-1blankon1) tambora; urgency=low
+evince (3.16.0-0blankon1) tambora; urgency=low
+
+  * New Upstream Release 
+
+ -- Rahman Yusri Aftian <aftian@di.blankon.in>  Sun, 31 May 2015 22:13:41 +0700
+
+evince (3.16.0-0ubuntu1~vivid1) vivid; urgency=medium
+
+  * New upstream release
+  * Bump build-dep on libgtk-3-dev (>= 3.15.3)
+  * Drop git patch included in new release
+  * libevdocument3-4.symbols: Update with new symbols
+
+ -- Tim Lunn <tim@feathertop.org>  Sun, 26 Apr 2015 07:56:02 +1000
+
+evince (3.14.2-0ubuntu2) vivid; urgency=medium
+
+  * debian/apparmor-profile: allow 'abstractions/dbus-strict' in previewer to
+    silence denial with print previews (LP: #1431641)
+
+ -- Jamie Strandboge <jamie@ubuntu.com>  Mon, 06 Apr 2015 10:07:52 -0500
+
+evince (3.14.2-0ubuntu1) vivid; urgency=medium
+
+  * New upstream bugfix release.
+
+ -- Iain Lane <iain.lane@canonical.com>  Mon, 09 Mar 2015 16:44:56 +0000
+
+evince (3.14.1-0ubuntu5) vivid; urgency=medium
+
+  * Actually add the patch to series. (LP: #1421480)
+
+ -- Iain Lane <iain@orangesquash.org.uk>  Sun, 22 Feb 2015 13:59:47 +0000
+
+evince (3.14.1-0ubuntu4) vivid; urgency=medium
+
+  * debian/patches/0001-Don-t-hide-the-titlebar-when-the-window-is-maximized.patch:
+    Cherry-pick from upstream. Let the environment decide when to hide the
+    titlebar. Fixes no titlebar in maximised evince under XFCE. (LP: #1422354)
+
+ -- Iain Lane <iain.lane@canonical.com>  Fri, 20 Feb 2015 18:16:21 +0000
+
+evince (3.14.1-0ubuntu3) vivid; urgency=medium
+
+  * Drop a lot of patches
+    - Revert use of GtkGesture
+    - Use libgrip
+    - adwaita-icon-theme → gnome-icon-them
+
+ -- Iain Lane <iain.lane@canonical.com>  Fri, 06 Feb 2015 14:27:10 +0000
+
+evince (3.14.1-0ubuntu2) vivid; urgency=medium
+
+  * Switch gnome-icon-theme to adwaita-icon-theme, which is its
+    successor. (LP: #1414613)
+
+ -- Iain Lane <iain@orangesquash.org.uk>  Mon, 26 Jan 2015 17:26:56 +0000
+
+evince (3.14.1-0ubuntu1) utopic; urgency=medium
+
+  [ Iain Lane ]
+  * New upstream release 3.14.1
+  * 0001-window-title-Keep-a-weak-ref-on-the-document.patch: Drop, in this
+    release.
+  * debian/patches/rtl_avoid_3.14_dep.patch: Conditionalise upstream commit
+    0c9816c1d85e28069083da1dc6859e85320c9d55 on the GTK version.
+
+  [ Sebastien Bacher ]
+  * debian/patches/traditional_menu_bar.patch:
+    - define the correct type for the gtkbuilder translations
+
+ -- Iain Lane <iain.lane@canonical.com>  Wed, 15 Oct 2014 13:10:49 +0100
+
+evince (3.14.0-0ubuntu2) utopic; urgency=medium
+
+  * debian/patches/0001-window-title-Keep-a-weak-ref-on-the-document.patch:
+    Cherry-pick from upstream git to fix a crash when reloading documents (LP:
+    #1369894)
+
+ -- Iain Lane <iain.lane@canonical.com>  Tue, 30 Sep 2014 11:23:24 +0100
+
+evince (3.14.0-0ubuntu1) utopic; urgency=medium
+
+  * New upstream stable release.
+    + Translation updates only
+
+ -- Iain Lane <iain.lane@canonical.com>  Fri, 26 Sep 2014 17:08:13 +0100
+
+evince (3.13.92-0ubuntu1) utopic; urgency=medium
+
+  * New upstream version
+  * debian/patches/traditional_menu_bar.patch: update translations list
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 22 Sep 2014 11:40:52 +0200
+
+evince (3.13.91-0ubuntu1) utopic; urgency=medium
+
+  * New upstream version (lp: #1367769):
+    - Do not open single page pdfs in dual mode by default (lp: #256445)
+    - Set the window title for empty windows to make sure it's exposed
+      to accessibility (lp: #704928)
+    - Close the window when CTRL+w shortcut is used in presentation
+      mode, instead of turning the screen white (lp #1289581)
+    - Keep the scroll position when switching between continuous and
+      non continuous mode (lp: #276749)
+    - Fix rotation direction in DJVU backend (lp: #1242678)
+    - Better handling of hi-dpi screen (lp: #1287915)
+    - Make <Ctrl>Home/End scroll to the start/end of the document 
+      (lp: #1279387)
+    - New Preserve Zoom Feature (lp: #286218)
+  * debian/control:
+    - drop libsm build-depends, that has been deprecated upstream
+    - build-depends on libgnome-desktop-3-dev
+    - updated gtk requirement
+  * debian/libevdocument3-4.symbols, debian/libevview3-3.symbols:
+    - updated for the new version
+  * debian/patches/gnome_icon_theme.patch:
+    - use old gnome-icon-theme name until we update that component
+  * debian/patches/gtk_no_gesture.patch:
+    - revert use of gtk gesture until we get gtk 3.13 (new in that version)
+  * debian/patches/traditional_menu_bar.patch:
+    - use traditionnal menubars under Unity (the gmenumodel work has been
+      commited upstream but not the menubar changes)
+  * debian/patches/unity_normal_titlebar.patch:
+    - use traditionnal menubars out of gnome-shell
+  * debian/rules:
+    - disable libgnome support in the gtk build
+  * Resynchronize on Debian
+  * debian/apparmor-profile:
+  * debian/apparmor-profile.abstraction:
+  * debian/evince.apport:
+  * debian/evince-common.dirs:
+    - Ubuntu apparmor profile
+  * debian/control:
+    - Build-Depend on dh-apparmor and libgrip-dev
+    - Suggests on apparmor
+  * debian/rules:
+    - install apparmor files
+  * debian/patches/11_grip_gestures.patch:    
+    - supports pinch to zoom, rotate, and drag gestures
+  * Changes deprecated with that version
+  * debian/rules:
+    - save some space by not shipping the synctex screencast.
+      (the video is not included in the new upstream version)
+    
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 15 Sep 2014 12:46:26 +0200
+
+evince (3.12.1-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/libevview3-3.symbols: Updated
+
+ -- Sjoerd Simons <sjoerd@debian.org>  Sat, 26 Apr 2014 16:39:37 +0200
+
+evince (3.12.0-1) unstable; urgency=medium
 
   * New upstream release.
 
- -- Aris Febrianto <ariesfebrianto@gmail.com>  Sun, 23 Mar 2014 15:46:14 +0700
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 25 Mar 2014 21:04:58 +0100
 
 evince (3.11.90-1) experimental; urgency=medium
 
@@ -17,11 +171,40 @@ evince (3.11.90-1) experimental; urgency=medium
 
  -- Andreas Henriksson <andreas@fatal.se>  Sun, 23 Feb 2014 20:11:04 +0100
 
-evince (3.10.3-0blankon1) suroboyo; urgency=low
+evince (3.10.3-0ubuntu16) utopic; urgency=medium
 
-  * New upstream release
+  * debian/apparmor-profile: fix at-spi2 rules added in last update to use a
+    glob rather than hardcoded UID (LP: #1308488)
 
- -- Mahyuddin Ramli <yudi.al@gmail.com>  Wed, 15 Jan 2014 20:05:58 +0700
+ -- Jamie Strandboge <jamie@ubuntu.com>  Wed, 13 Aug 2014 07:06:29 -0500
+
+evince (3.10.3-0ubuntu15) utopic; urgency=medium
+
+  * debian/apparmor-profile:
+    - allow site-wide dconf. Thanks to Lars Masden. (LP: #1355804)
+    - allow read/write to files we own in /media (LP: #1096837)
+    - allow read/write to files we own in /run/user/1000/at-spi2-*
+      (LP: #1308488)
+    - allow 'l' to /run/user/*/gvfs-metadata/** (LP: #1344810)
+    - allow read/write of @{HOME}/.cache/dconf/user (LP: #1024605)
+  * debian/apparmor-profile.abstraction:
+    - allow read of /etc/xdg/lubuntu/applications/defaults.list (LP: #1290157,
+      LP: #1299239)
+    - allow read of /**.[eE][pP][sS][fFiI23] (LP: #1330430)
+
+ -- Jamie Strandboge <jamie@ubuntu.com>  Tue, 12 Aug 2014 14:30:43 -0500
+
+evince (3.10.3-0ubuntu14) utopic; urgency=medium
+
+  * Remove t1lib dependency (scheduled for removal).
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 05 Aug 2014 18:22:04 +0200
+
+evince (3.10.0-2) unstable; urgency=medium
+
+  * Remove t1lib dependency (Closes: #638759)
+
+ -- Andreas Henriksson <andreas@fatal.se>  Fri, 17 Jan 2014 22:35:24 +0100
 
 evince (3.10.0-1) unstable; urgency=low
 
