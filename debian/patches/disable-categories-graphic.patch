@@ -1,0 +1,8 @@
+diff -Naur -p1 evince-3.20.0.orig/data/evince.desktop.in.in evince-3.20.0/data/evince.desktop.in.in
+--- evince-3.20.0.orig/data/evince.desktop.in.in	2014-11-29 16:40:15.000000000 +0700
++++ evince-3.20.0/data/evince.desktop.in.in	2016-06-20 09:25:17.330943897 +0700
+@@ -15,3 +15,3 @@ X-GNOME-Bugzilla-Component=BugBuddyBugs
+ X-GNOME-Bugzilla-Version=@VERSION@
+-Categories=GNOME;GTK;Office;Viewer;Graphics;2DGraphics;VectorGraphics;
++Categories=GNOME;GTK;Office;Viewer;
+ MimeType=@EVINCE_MIME_TYPES@;

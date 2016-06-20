@@ -2,10 +2,6 @@
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
-DEB_BUILDDIR = debian/build
-DEB_MAKE_DESTDIRSKEL = $(CURDIR)/debian/install/@FLAVOR@
-DEB_MAKE_FLAVORS = evince evince-gtk
-
 include /usr/share/cdbs/1/rules/autoreconf.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/gnome.mk
@@ -14,38 +10,34 @@ include /usr/share/gnome-pkg-tools/1/rules/uploaders.mk
 include /usr/share/gnome-pkg-tools/1/rules/gnome-version.mk
 include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
 
-DEB_DH_INSTALL_ARGS += --sourcedir=debian/install/evince
-DEB_DH_INSTALL_ARGS_evince-gtk += --sourcedir=debian/install/evince-gtk
+export DEB_DH_AUTORECONF_ARGS = --as-needed
 
-DEB_CONFIGURE_EXTRA_FLAGS = \
-			--enable-djvu \
-			--enable-dvi \
-			--disable-t1lib \
-			--enable-xps \
-			--enable-comics \
-			--with-libgrip=yes
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,-z,defs -Wl,-O1 -Wl,--as-needed
+include /usr/share/dpkg/buildflags.mk
 
-DEB_DH_MAKESHLIBS_ARGS += -X /usr/lib/nautilus/ -X /usr/lib/evince/ \
-	-V -- -c4
+# Mozilla plugins shouldn't be installed in multi-arch path
+export BROWSER_PLUGIN_DIR = /usr/lib/mozilla/plugins
 
-DEB_DH_STRIP_ARGS_evince-gtk =
+DEB_CONFIGURE_EXTRA_FLAGS += --libdir="\$${prefix}/lib/$(DEB_HOST_MULTIARCH)" \
+                             --libexecdir=/usr/lib/evince \
+                             --enable-djvu \
+                             --enable-dvi \
+                             --enable-xps \
+                             --enable-comics \
+                             --enable-introspection \
+                             --enable-gtk-doc \
+                             --enable-libgnome-desktop
 
-DEB_CONFIGURE_FLAGS_evince = \
-			--enable-introspection \
-			--enable-gtk-doc
+DEB_DH_MAKESHLIBS_ARGS += -X /usr/lib/nautilus/ \
+                          -X /usr/lib/$(DEB_HOST_MULTIARCH)/evince/ \
+                          -V -- -c4
 
-DEB_CONFIGURE_FLAGS_evince-gtk = \
-			--without-keyring \
-			--disable-nautilus \
-			--disable-introspection \
-			--disable-gtk-doc \
-			--disable-libgnome-desktop
+DEB_DH_SHLIBDEPS_ARGS += -X /usr/lib/nautilus/
 
-install/evince-common::
-	cp debian/apparmor-profile debian/evince-common/etc/apparmor.d/usr.bin.evince
-	cp debian/apparmor-profile.abstraction debian/evince-common/etc/apparmor.d/abstractions/evince
-	cp debian/evince.apport debian/evince-common/usr/share/apport/package-hooks/source_evince.py
-	dh_apparmor --profile-name=usr.bin.evince -pevince-common
-	cd po; intltool-update --pot --verbose
-	dh_install -p${cdbs_curpkg} --ignore=debian/${cdbs_curpkg}.install \
-		debian/evince.xpm usr/share/pixmaps
+DEB_DH_STRIP_ARGS_ALL = --dbgsym-migration='evince-dbg (<< 3.20.0-2~)'
+
+install/evince::
+	install -m 0644 -D debian/apparmor-profile debian/evince/etc/apparmor.d/usr.bin.evince
+	install -m 0644 -D debian/apparmor-profile.abstraction debian/evince/etc/apparmor.d/abstractions/evince
+	install -m 0644 -D debian/evince.apport debian/evince/usr/share/apport/package-hooks/source_evince.py
+	dh_apparmor --profile-name=usr.bin.evince -pevince
