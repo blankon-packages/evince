@@ -1,4 +1,2 @@
 01_nautilus_extension_path.patch
-git_fix_gesture_shortcut_help.patch
-Remove-the-MimeType-association-from-the-evince-prev.patch
 disable-categories-graphic.patch

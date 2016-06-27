@@ -1,3 +1,19 @@
+evince (3.20.1-1blankon1) tambora; urgency=medium
+
+  * Non-maintainer upload.
+
+ -- Syai Mif <syaimif@di.blankon.in>  Mon, 27 Jun 2016 11:02:19 +0700
+
+evince (3.20.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches, drop those which have been applied upstream.
+  * Convert from cdbs to dh.
+  * Bump Standards-Version to 3.9.8.
+  * Use --list-missing to show uninstalled files.
+
+ -- Michael Biebl <biebl@debian.org>  Fri, 24 Jun 2016 00:43:39 +0200
+
 evince (3.20.0-4blankon1) tambora; urgency=medium
 
   * Add patch disable-category-graphic

@@ -6,7 +6,6 @@ XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.
 Uploaders: @GNOME_TEAM@
 Build-Depends: adwaita-icon-theme,
                autotools-dev,
-               cdbs (>= 0.4.90),
                debhelper (>= 9.20160114~),
                dh-apparmor,
                dh-autoreconf,
@@ -38,7 +37,7 @@ Build-Depends: adwaita-icon-theme,
                libxml2-dev (>= 2.5.0),
                yelp-tools,
                zlib1g-dev
-Standards-Version: 3.9.7
+Standards-Version: 3.9.8
 Homepage: https://wiki.gnome.org/Apps/Evince
 Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/evince
 Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/evince
